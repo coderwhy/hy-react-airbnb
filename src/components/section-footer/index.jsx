@@ -1,6 +1,8 @@
 import IconMoreArrow from '@/assets/svg/icon-more-arrow'
+import { changeHeaderConfigAction } from '@/store/features/main'
 import PropTypes from 'prop-types'
 import React, { memo } from 'react'
+import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { FooterWrapper } from './style'
 
@@ -13,7 +15,9 @@ const SectionFooter = memo((props) => {
   }
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   function showEntireHandle() {
+    dispatch(changeHeaderConfigAction({ isFixed: true, isHome: false }))
     navigate("/entire")
   }
 

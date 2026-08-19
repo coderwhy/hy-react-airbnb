@@ -1,15 +1,13 @@
 import RoomItem from '@/components/room-item'
 import { changeDetailInfoActon } from '@/store/features/detail'
 import React, { memo } from 'react'
-import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { RoomsWrapper } from './style'
 
 const EntireRooms = memo(() => {
-  const { roomList, isLoading } = useSelector((state) => ({
-    roomList: state.entire.roomList,
-    isLoading: state.entire.isLoading
-  }), shallowEqual)
+  const roomList = useSelector((state) => state.entire.roomList)
+  const isLoading = useSelector((state) => state.entire.isLoading)
 
   const navitate = useNavigate()
   const dispatch = useDispatch()

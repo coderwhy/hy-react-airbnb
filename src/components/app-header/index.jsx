@@ -10,29 +10,32 @@ import { HeaderWrapper, SearchAreaPlaceholder } from './style'
 
 const AppHeader = memo((props) => {
   const [isSearch, setIsSearch] = useState(false)
-  const [isAlpha, setIsAlpha] = useState(false)
 
   /** redux中获取数据 */
-  const { headerConfig } = useSelector((state) => ({
-    headerConfig: state.main.headerConfig
-  }))
+  const headerConfig = useSelector((state) => state.main.headerConfig)
   const { isFixed, isHome } = headerConfig
 
   /** 其他hooks的逻辑 */
   const { scrollY } = useScrollPosition()
-  if (isHome && scrollY === 0 && !isSearch) {
-    setIsAlpha(true)
-    setIsSearch(true)
-  }
-  if (isHome && isAlpha && scrollY > 0 && isSearch) {
-    setIsAlpha(false)
-    setIsSearch(false)
-  }
 
-  const prevY = useRef()
-  useEffect(() => { prevY.current = 0 }, [])
-  if (!isSearch) prevY.current = scrollY
-  if (Math.abs(prevY.current - scrollY) > 30 && isSearch) setIsSearch(false)
+  // Keep route/scroll transitions in effects so rendering stays pure.
+  useEffect(() => {
+    setIsSearch(isHome && scrollY === 0)
+  }, [isHome, scrollY])
+
+  const prevY = useRef(scrollY)
+  useEffect(() => {
+    if (!isSearch) {
+      prevY.current = scrollY
+      return
+    }
+
+    if (Math.abs(prevY.current - scrollY) > 30) {
+      setIsSearch(false)
+    }
+  }, [isSearch, scrollY])
+
+  const isAlpha = isHome && isSearch && scrollY === 0
 
   /** 事件处理逻辑 */
   function searchBarClickHandle() {
@@ -40,7 +43,7 @@ const AppHeader = memo((props) => {
   }
 
   return (
-    <ThemeProvider theme={{isAlpha}}>
+    <ThemeProvider theme={{isAlpha: isAlpha}}>
       <HeaderWrapper className={classNames({fixed: isFixed})}>
         <div className='content'>
           <div className='top'>
@@ -50,7 +53,7 @@ const AppHeader = memo((props) => {
           </div>
           <SearchAreaPlaceholder isSearch={isSearch}/>
         </div>
-        { isSearch && !isAlpha && <div className='cover' onClick={e => setIsSearch(false)}></div> }
+        { isSearch && !isAlpha && <div className='cover' onClick={() => setIsSearch(false)}></div> }
       </HeaderWrapper>
     </ThemeProvider>
   )

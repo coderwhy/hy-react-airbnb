@@ -1,13 +1,12 @@
 import { changeHeaderConfigAction } from '@/store/features/main'
 import React, { memo, useEffect } from 'react'
-import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import DetailPictures from './c-cpns/detail-pictures'
+import DetailInfos from './c-cpns/detail-infos'
 import { DetailWrapper } from './style'
 
 const Detail = memo((props) => {
-  const { detailInfo } = useSelector((state) => ({
-    detailInfo: state.detail.detailInfo
-  }), shallowEqual)
+  const detailInfo = useSelector((state) => state.detail.detailInfo)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(changeHeaderConfigAction({ isFixed: false, isHome: false }))
@@ -16,6 +15,7 @@ const Detail = memo((props) => {
   return (
     <DetailWrapper>
       <DetailPictures pictureUrls={detailInfo.picture_urls}/>
+      <DetailInfos detailInfo={detailInfo}/>
     </DetailWrapper>
   )
 })

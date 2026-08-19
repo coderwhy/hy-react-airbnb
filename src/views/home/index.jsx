@@ -1,7 +1,7 @@
 import { fetchHomeAllDataAction } from '@/store/features/home'
 import { changeHeaderConfigAction } from '@/store/features/main'
 import React, { memo, useEffect } from 'react'
-import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import HomeBanner from './c-cpns/home-banner'
 import HomeLongFor from './c-cpns/home-longfor'
@@ -13,14 +13,12 @@ import { HomeWrapper } from './style'
 const Home = memo((props) => {
 
   /** 从redux中获取数据 */
-  const { discountInfo, hotRecommendInfo, highScoreInfo, goodPriceInfo, plusInfo, longForInfo } = useSelector((state) => ({
-    discountInfo: state.home.discountInfo,
-    hotRecommendInfo: state.home.hotRecommendInfo,
-    highScoreInfo: state.home.highScoreInfo,
-    goodPriceInfo: state.home.goodPriceInfo,
-    plusInfo: state.home.plusInfo,
-    longForInfo: state.home.longForInfo
-  }), shallowEqual)
+  const discountInfo = useSelector((state) => state.home.discountInfo)
+  const hotRecommendInfo = useSelector((state) => state.home.hotRecommendInfo)
+  const highScoreInfo = useSelector((state) => state.home.highScoreInfo)
+  const goodPriceInfo = useSelector((state) => state.home.goodPriceInfo)
+  const plusInfo = useSelector((state) => state.home.plusInfo)
+  const longForInfo = useSelector((state) => state.home.longForInfo)
 
   /** 派发事件,发送网络请求 */
   const dispatch = useDispatch()
