@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# React Airbnb Experience
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An Airbnb-inspired accommodation browsing demo built with React 18. This is an educational portfolio project based on a React course, not an official Airbnb product.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Airbnb-style home page with curated destinations and room sections
+- Room listing page with filters, pagination, loading states, and API data
+- Room image carousel and full-screen photo browser
+- React Router, Redux Toolkit, styled-components, Ant Design, and Material UI
 
-### `npm start`
+## Tech stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React 18 + Create React App
+- React Router 6
+- Redux Toolkit + React Redux
+- styled-components + Less
+- Axios
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting started
 
-### `npm test`
+Requirements: Node.js 18+ and npm 9+.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm install
+cp .env.example .env.local
+npm start
+```
 
-### `npm run build`
+Open [http://localhost:3000](http://localhost:3000).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Useful commands:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm run build   # production build
+npm test        # test runner
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Routes
 
-### `npm run eject`
+- `#/home` — home page
+- `#/entire` — accommodation listing
+- `#/detail` — accommodation photo gallery
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## API configuration
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The demo currently consumes a course-provided API. Set `REACT_APP_API_BASE_URL` in `.env.local` to use another compatible API endpoint. The endpoint may be unavailable outside the original learning environment.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Project status
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The current milestone focuses on browsing, listing, pagination, photo viewing, and a basic room information module. Booking flows, authentication, reviews, search, and production-grade error states are planned for future iterations once real services are available.
 
-## Learn More
+## License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The source code in this repository is licensed under the [MIT License](./LICENSE).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This is an independent educational project and is not affiliated with Airbnb. Airbnb names, logos, visual assets, third-party images, and course-provided API data belong to their respective owners and are not claimed by this license.

@@ -6,7 +6,7 @@ import { useScrollTop } from './hooks'
 import routes from './router'
 
 const App = memo((props) => {
-  useScrollTop() // 回到顶部
+  useScrollTop()
 
   return (
     <div>

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useEffect, useRef, useState } from 'react'
 import { SwitchTransition, CSSTransition } from 'react-transition-group'
 
 import IconClose from '@/assets/svg/icon-close'
@@ -16,6 +16,7 @@ const PictureBrowser = memo((props) => {
   const [selectIndex, setSelectIndex] = useState(0)
   const [isNext, setIsNext] = useState(true)
   const [showList, setShowList] = useState(true)
+  const imageRef = useRef(null)
   useEffect(() => {
     document.body.style.overflow = "hidden"
   }, [])
@@ -64,10 +65,11 @@ const PictureBrowser = memo((props) => {
           <SwitchTransition mode='in-out'>
             <CSSTransition
               key={pictureUrls[selectIndex]}
+              nodeRef={imageRef}
               timeout={150}
               classNames="fade"
             >
-              <img src={pictureUrls[selectIndex]} alt="" />
+              <img ref={imageRef} src={pictureUrls[selectIndex]} alt="" />
             </CSSTransition>
           </SwitchTransition>
         </div>

@@ -2,14 +2,12 @@ import React, { memo } from 'react'
 import Pagination from '@mui/material/Pagination';
 
 import { PaginationWrapper } from './style'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux'
 import { fetchEntireDataAction } from '@/store/features/entire/actionCreators';
 
 const EntirePagination = memo(() => {
-  const { currentPage, totalCount } = useSelector((state) => ({
-    currentPage: state.entire.currentPage,
-    totalCount: state.entire.totalCount
-  }))
+  const currentPage = useSelector((state) => state.entire.currentPage)
+  const totalCount = useSelector((state) => state.entire.totalCount)
 
   const count = Math.ceil(totalCount / 20)
   const start = currentPage * 20 + 1
